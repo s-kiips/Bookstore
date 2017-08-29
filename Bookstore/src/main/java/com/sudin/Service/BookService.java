@@ -10,4 +10,5 @@ public interface BookService {
 
     Iterable<Book> findAll();
 
+    Book findOne(Long id);
 }
