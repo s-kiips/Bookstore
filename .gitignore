@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/Bookstore.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/workspace.xml
+AdminPortal/.mvn/
+AdminPortal/AdminPortal.iml
+AdminPortal/mvnw
+AdminPortal/mvnw.cmd
+AdminPortal/target/
+Bookstore/mvnw
+Bookstore/mvnw.cmd
+Bookstore/target/
