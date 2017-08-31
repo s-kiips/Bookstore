@@ -5,11 +5,13 @@ import com.sudin.Domain.Security.PasswordResetToken;
 import com.sudin.Domain.Security.Role;
 import com.sudin.Domain.Security.UserRole;
 import com.sudin.Domain.User;
+import com.sudin.Domain.UserShipping;
 import com.sudin.Service.BookService;
 import com.sudin.Service.UserService;
 import com.sudin.Service.impls.UserSecurityService;
 import com.sudin.Utility.MailConstructor;
 import com.sudin.Utility.SecurityUtility;
+import com.sudin.Utility.USConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -118,6 +120,30 @@ public class HomeController {
 
         return "myAccount";
     }
+
+
+    @RequestMapping("/myProfile")
+    public String myProfile(Model model, Principal principal){
+        User user=userService.findByUsername(principal.getName());
+        model.addAttribute("user",user);
+        model.addAttribute("userPaymentList",user.getUserPaymentList());
+        model.addAttribute("userShippingList",user.getUserShippingList());
+//        model.addAttribute("orderList",user.orderList());
+
+        UserShipping userShipping=new UserShipping();
+        model.addAttribute("userShipping",userShipping);
+
+        model.addAttribute("listOfCreditCards",true);
+        model.addAttribute("listOfShippingAddress",true);
+
+        List<String> stateList= USConstants.listOfUSStatesCode;
+        Collections.sort(stateList);
+        model.addAttribute("stateList",stateList);
+        model.addAttribute("callActiveEdit",true);
+
+        return "myProfile";
+    }
+
 
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
     public String newUserPost(
