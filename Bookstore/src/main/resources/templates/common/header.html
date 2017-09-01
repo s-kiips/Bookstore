@@ -19,6 +19,13 @@
 
     <link rel="icon" href="/image/book-icon-2.png"/>
 
+
+    <!--Data table content-->
+    <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet"/>
+
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -68,8 +75,12 @@
 </div>
 
 <div th:fragment="body-bottom-scripts">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script th:src="@{/js/jquery.min.js}"></script>
     <script src="/js/bootstrap.min.js"></script>
+
+    <!--Data Table script-->
+    <script th:src="@{/js/jquery.dataTables.min.js}"></script>
+    <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
 </div>
 
 <div th:fragment="common-footer">

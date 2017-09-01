@@ -3,6 +3,9 @@ package com.sudin.Service;
 import com.sudin.Domain.Security.PasswordResetToken;
 import com.sudin.Domain.Security.UserRole;
 import com.sudin.Domain.User;
+import com.sudin.Domain.UserBilling;
+import com.sudin.Domain.UserPayment;
+import com.sudin.Domain.UserShipping;
 
 import java.util.Set;
 
@@ -22,5 +25,11 @@ public interface UserService {
     User createUser(User user, Set<UserRole> userRoles) throws Exception;
 
     User save(User user);
+
+    void updateUserBilling(UserBilling userBilling, UserPayment userPayment,User user);
+
+    void setUserDefaultPayment(Long userPaymentId,User user);
+
+    void updateUserShipping(UserShipping userShipping,User user);
 
 }

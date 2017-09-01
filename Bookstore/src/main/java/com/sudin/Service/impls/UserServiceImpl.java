@@ -3,8 +3,12 @@ package com.sudin.Service.impls;
 import com.sudin.Domain.Security.PasswordResetToken;
 import com.sudin.Domain.Security.UserRole;
 import com.sudin.Domain.User;
+import com.sudin.Domain.UserBilling;
+import com.sudin.Domain.UserPayment;
+import com.sudin.Domain.UserShipping;
 import com.sudin.Repository.PasswordResetTokenRepository;
 import com.sudin.Repository.RoleRepository;
+import com.sudin.Repository.UserPaymentRepository;
 import com.sudin.Repository.UserRepository;
 import com.sudin.Service.UserService;
 import org.slf4j.Logger;
@@ -12,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -21,7 +26,7 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final Logger LOG= LoggerFactory.getLogger(UserService.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
@@ -31,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private UserPaymentRepository userPaymentRepository;
 
 
     @Override
@@ -63,8 +71,8 @@ public class UserServiceImpl implements UserService {
             for (UserRole ur : userRoles) {
                 roleRepository.save(ur.getRole());
             }
-        user.getUserRoles().addAll(userRoles);
-            localUser=userRepository.save(user);
+            user.getUserRoles().addAll(userRoles);
+            localUser = userRepository.save(user);
         }
         return localUser;
     }
@@ -72,6 +80,39 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user) {
+        userPayment.setUser(user);
+        userPayment.setUserBiling(userBilling);
+        userPayment.setDefaultPayment(true);
+        userBilling.setUserPayment(userPayment);
+        user.getUserPaymentList().add(userPayment);
+        save(user);
+    }
+
+    @Override
+    public void setUserDefaultPayment(Long userPaymentId, User user) {
+        List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
+        for (UserPayment userPayment : userPaymentList) {
+            if (userPayment.getId() == userPaymentId) {
+                userPayment.setDefaultPayment(true);
+                userPaymentRepository.save(userPayment);
+            } else {
+                userPayment.setDefaultPayment(false);
+                userPaymentRepository.save(userPayment);
+
+            }
+        }
+    }
+
+    @Override
+    public void updateUserShipping(UserShipping userShipping, User user) {
+        userShipping.setUser(user);
+        userShipping.setUserShippingDefault(true);
+        user.getUserShippingList().add(userShipping);
+        save(user);
     }
 
 }
