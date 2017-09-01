@@ -6,10 +6,7 @@ import com.sudin.Domain.User;
 import com.sudin.Domain.UserBilling;
 import com.sudin.Domain.UserPayment;
 import com.sudin.Domain.UserShipping;
-import com.sudin.Repository.PasswordResetTokenRepository;
-import com.sudin.Repository.RoleRepository;
-import com.sudin.Repository.UserPaymentRepository;
-import com.sudin.Repository.UserRepository;
+import com.sudin.Repository.*;
 import com.sudin.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserPaymentRepository userPaymentRepository;
+
+    @Autowired
+    private UserShippingRepository userShippingRepository;
 
 
     @Override
@@ -102,6 +102,21 @@ public class UserServiceImpl implements UserService {
             } else {
                 userPayment.setDefaultPayment(false);
                 userPaymentRepository.save(userPayment);
+
+            }
+        }
+    }
+
+    @Override
+    public void setUserDefaultShipping(Long userShippingId, User user) {
+        List<UserShipping> userShippingList= (List<UserShipping>) userShippingRepository.findAll();
+        for (UserShipping userShipping : userShippingList) {
+            if (userShipping.getId() == userShippingId) {
+                userShipping.setUserShippingDefault(true);
+                userShippingRepository.save(userShipping);
+            } else {
+                userShipping.setUserShippingDefault(false);
+                userShippingRepository.save(userShipping);
 
             }
         }
