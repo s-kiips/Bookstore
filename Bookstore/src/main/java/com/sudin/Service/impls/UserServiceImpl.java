@@ -1,18 +1,17 @@
 package com.sudin.Service.impls;
 
+import com.sudin.Domain.*;
 import com.sudin.Domain.Security.PasswordResetToken;
 import com.sudin.Domain.Security.UserRole;
-import com.sudin.Domain.User;
-import com.sudin.Domain.UserBilling;
-import com.sudin.Domain.UserPayment;
-import com.sudin.Domain.UserShipping;
 import com.sudin.Repository.*;
 import com.sudin.Service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -63,6 +62,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public User createUser(User user, Set<UserRole> userRoles) throws Exception {
         User localUser = userRepository.findByUsername(user.getUsername());
         if (localUser != null) {
@@ -72,6 +72,11 @@ public class UserServiceImpl implements UserService {
                 roleRepository.save(ur.getRole());
             }
             user.getUserRoles().addAll(userRoles);
+            ShoppingCart shoppingCart=new ShoppingCart();
+            shoppingCart.setUser(user);
+            user.setShoppingCart(shoppingCart);
+            user.setUserShippingList(new ArrayList<>());
+            user.setUserPaymentList(new ArrayList<>());
             localUser = userRepository.save(user);
         }
         return localUser;
