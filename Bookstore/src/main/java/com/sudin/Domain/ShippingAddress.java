@@ -12,7 +12,7 @@ public class ShippingAddress {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String shippingAddressName;
-    private String shippingAddressStreet1;
+    private String shippingAddressStreet1;  
     private String shippingAddressStreet2;
     private String shippingAddressCity;
     private String shippingAddressState;
