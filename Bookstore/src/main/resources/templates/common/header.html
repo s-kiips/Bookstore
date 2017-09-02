@@ -24,7 +24,7 @@
     <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet"/>
 
-    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
 
 </head>
 
@@ -76,7 +76,9 @@
 
 <div th:fragment="body-bottom-scripts">
     <script th:src="@{/js/jquery.min.js}"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+    <script th:src="@{/js/scripts.js}"></script>
 
     <!--Data Table script-->
     <script th:src="@{/js/jquery.dataTables.min.js}"></script>
@@ -84,7 +86,8 @@
 </div>
 
 <div th:fragment="common-footer">
-    <div style="text-align:center;font-size: 16px;"><strong>All Rights Are Reserved &copy; 2017 Sudin Ranjitkar</strong></div>
+    <div style="text-align:center;font-size: 16px;"><strong>All Rights Are Reserved &copy; 2017 Sudin Ranjitkar</strong>
+    </div>
 </div>
 
 </body>
