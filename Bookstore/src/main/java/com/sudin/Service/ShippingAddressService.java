@@ -8,6 +8,6 @@ import com.sudin.Domain.UserShipping;
  */
 public interface ShippingAddressService {
 
-    ShippingAddress setByUserShipping(UserShipping userShipping,ShippingAddress shippingAddress);
+    ShippingAddress setByUserShipping(UserShipping userShipping, ShippingAddress shippingAddress);
 
 }

@@ -1,96 +1,99 @@
 package com.sudin.Domain;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
-/**
- * Created by s-k-ii-p-s on 8/31/17.
- */
 @Entity
 public class BillingAddress {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String billingAddressName;
-    private String billingAddressStreet1;
-    private String billingAddressStreet2;
-    private String billingAddressCity;
-    private String billingAddressState;
-    private String billingAddressCountry;
-    private String billingAddressZipcode;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	private String BillingAddressName;
+	private String BillingAddressStreet1;
+	private String BillingAddressStreet2;
+	private String BillingAddressCity;
+	private String BillingAddressState;
+	private String BillingAddressCountry;
+	private String BillingAddressZipcode;
+	
+	@OneToOne
+	private Order order;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserPayment userPayment;
+	public Long getId() {
+		return id;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public String getBillingAddressName() {
+		return BillingAddressName;
+	}
 
-    public String getbillingAddressName() {
-        return billingAddressName;
-    }
+	public void setBillingAddressName(String billingAddressName) {
+		BillingAddressName = billingAddressName;
+	}
 
-    public void setbillingAddressName(String billingAddressName) {
-        this.billingAddressName = billingAddressName;
-    }
+	public String getBillingAddressStreet1() {
+		return BillingAddressStreet1;
+	}
 
-    public String getbillingAddressStreet1() {
-        return billingAddressStreet1;
-    }
+	public void setBillingAddressStreet1(String billingAddressStreet1) {
+		BillingAddressStreet1 = billingAddressStreet1;
+	}
 
-    public void setbillingAddressStreet1(String billingAddressStreet1) {
-        this.billingAddressStreet1 = billingAddressStreet1;
-    }
+	public String getBillingAddressStreet2() {
+		return BillingAddressStreet2;
+	}
 
-    public String getbillingAddressStreet2() {
-        return billingAddressStreet2;
-    }
+	public void setBillingAddressStreet2(String billingAddressStreet2) {
+		BillingAddressStreet2 = billingAddressStreet2;
+	}
 
-    public void setbillingAddressStreet2(String billingAddressStreet2) {
-        this.billingAddressStreet2 = billingAddressStreet2;
-    }
+	public String getBillingAddressCity() {
+		return BillingAddressCity;
+	}
 
-    public String getbillingAddressCity() {
-        return billingAddressCity;
-    }
+	public void setBillingAddressCity(String billingAddressCity) {
+		BillingAddressCity = billingAddressCity;
+	}
 
-    public void setbillingAddressCity(String billingAddressCity) {
-        this.billingAddressCity = billingAddressCity;
-    }
+	public String getBillingAddressState() {
+		return BillingAddressState;
+	}
 
-    public String getbillingAddressState() {
-        return billingAddressState;
-    }
+	public void setBillingAddressState(String billingAddressState) {
+		BillingAddressState = billingAddressState;
+	}
 
-    public void setbillingAddressState(String billingAddressState) {
-        this.billingAddressState = billingAddressState;
-    }
+	public String getBillingAddressCountry() {
+		return BillingAddressCountry;
+	}
 
-    public String getbillingAddressCountry() {
-        return billingAddressCountry;
-    }
+	public void setBillingAddressCountry(String billingAddressCountry) {
+		BillingAddressCountry = billingAddressCountry;
+	}
 
-    public void setbillingAddressCountry(String billingAddressCountry) {
-        this.billingAddressCountry = billingAddressCountry;
-    }
+	public String getBillingAddressZipcode() {
+		return BillingAddressZipcode;
+	}
 
-    public String getbillingAddressZipcode() {
-        return billingAddressZipcode;
-    }
+	public void setBillingAddressZipcode(String billingAddressZipcode) {
+		BillingAddressZipcode = billingAddressZipcode;
+	}
 
-    public void setbillingAddressZipcode(String billingAddressZipcode) {
-        this.billingAddressZipcode = billingAddressZipcode;
-    }
+	public Order getOrder() {
+		return order;
+	}
 
-    public UserPayment getUserPayment() {
-        return userPayment;
-    }
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
-    public void setUserPayment(UserPayment userPayment) {
-        this.userPayment = userPayment;
-    }
 }

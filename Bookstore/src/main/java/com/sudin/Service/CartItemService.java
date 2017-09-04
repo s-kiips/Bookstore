@@ -1,9 +1,6 @@
 package com.sudin.Service;
 
-import com.sudin.Domain.Book;
-import com.sudin.Domain.CartItem;
-import com.sudin.Domain.ShoppingCart;
-import com.sudin.Domain.User;
+import com.sudin.Domain.*;
 
 import java.util.List;
 
@@ -21,5 +18,9 @@ public interface CartItemService {
     CartItem findById(Long id);
 
     void removeCartItem(CartItem cartItem);
+
+    CartItem save(CartItem cartItem);
+
+    List<CartItem> findByOrder(Order order);
 
 }
