@@ -320,7 +320,7 @@ public class HomeController {
             return "badRequestPage";
         } else {
             model.addAttribute("user", user);
-            UserBilling userBilling = userPayment.getUserBiling() ;
+            UserBilling userBilling = userPayment.getUserBiling();
             model.addAttribute("userPayment", userPayment);
             model.addAttribute("userBilling", userBilling);
 
