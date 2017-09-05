@@ -9,9 +9,11 @@
 
 <div class="container">
     <div class="table-responsive">
-        <table id="bookListTable" class="table table-responsive table-hover table-bordered table-stripped table-inverse">
+        <table id="bookListTable"
+               class="table table-responsive table-hover table-bordered table-stripped table-inverse">
             <thead>
             <tr>
+                <th><input th:id="selectAllBooks" type="checkbox"/></th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>Category</th>
@@ -23,18 +25,28 @@
             </thead>
             <tbody>
             <tr data-th-each="book : ${bookList}">
-                <!--<td><input hidden="hidden" name="id" th:value="${book.id}"/></td>-->
+                <td>
+                    <input hidden="hidden" name="id" th:value="${book.id}"/>
+                    <input th:id="'selected'+${book.id}" class="checkboxBook" type="checkbox"/>
+                </td>
                 <td><a th:href="@{/book/bookInfo(id=${book.id})}"><span th:text="${book.title}"></span></a></td>
                 <td th:text="${book.author}"></td>
                 <td th:text="${book.category}"></td>
                 <td th:text="${book.listPrice}"></td>
                 <td th:text="${book.ourPrice}"></td>
                 <td th:text="${book.active}"></td>
-                <td>delete</td>
+                <td>
+                    <input hidden="hidden" name="id" th:value="${book.id}"/>
+                    <button th:id="'oneBook-'+${book.id}" class="btn btn-danger btn-xs delete-book"
+                            type="submit" value="delete">
+                        <span class="fa fa-times">Delete</span>
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
+    <button th:id="deleteSelected" class="btn btn-danger">Delete Selected</button>
 </div>
 
 <div th:replace="common/header :: common-footer"/>
@@ -42,11 +54,11 @@
 
 <script>
     $(document).ready(function () {
-       $("#bookListTable").DataTable({
-           "lengthMenu":[[5,10,15,20,-1],[5,10,15,20,"All"]],
-          "ordering":false,
-           stateSave:true
-       });
+        $("#bookListTable").DataTable({
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "All"]],
+            "ordering": false,
+            stateSave: true
+        });
     });
 </script>
 </body>

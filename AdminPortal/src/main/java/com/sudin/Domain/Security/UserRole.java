@@ -1,5 +1,6 @@
 package com.sudin.Domain.Security;
 
+
 import com.sudin.Domain.User;
 
 import javax.persistence.*;
