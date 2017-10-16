@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
-<head th:replace="common/header :: common-header" />
+<head th:replace="common/header :: common-header"/>
 
 <body>
-<div th:replace="common/header :: navbar " />
+<div th:replace="common/header :: navbar "/>
 
 <div class="container">
     <div class="row banner">
@@ -26,7 +26,7 @@
                             <div class="item active">
                                 <img
                                         src="http://lorempixel.com/output/sports-q-c-1600-500-1.jpg"
-                                        alt="..." />
+                                        alt="..."/>
                                 <div class="carousel-caption">
                                     <h4>First Thumbnail Label</h4>
                                     <p>Contrary to popular belief, Lorem Ipsum is not simply
@@ -37,7 +37,7 @@
                             <div class="item">
                                 <img
                                         src="http://lorempixel.com/output/sports-q-c-1600-500-2.jpg"
-                                        alt="..." />
+                                        alt="..."/>
                                 <div class="carousel-caption">
                                     <h4>First Thumbnail Label</h4>
                                     <p>Contrary to popular belief, Lorem Ipsum is not simply
@@ -48,7 +48,7 @@
                             <div class="item">
                                 <img
                                         src="http://lorempixel.com/output/sports-q-c-1600-500-3.jpg"
-                                        alt="..." />
+                                        alt="..."/>
                                 <div class="carousel-caption">
                                     <h4>First Thumbnail Label</h4>
                                     <p>Contrary to popular belief, Lorem Ipsum is not simply
@@ -74,32 +74,71 @@
             </div>
         </div>
         <div class="col-xs-4">
-            <img src="/image/logo-4.png" class="img-responsive" />
+            <img src="/image/logo-4.png" class="img-responsive"/>
         </div>
     </div>
 
-    <hr />
+    <hr/>
 
     <div class="row">
         <div class="col-xs-4">
             <div clas="panel panel-default">
+                <a th:href="@{/bookshelf}" style="color: #0c0c0c">
+                <div class="panel-header"><span style="font-size: x-large;"><center>BestSellers</center></span></div>
                 <div class="panel-body">
-                    <a th:href="@{/bookshelf}"><img src="/image/bestseller.png" class="img-responsive" /></a>
+                    <img src="/image/bestseller.png" class="img-responsive"/>
+                </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div clas="panel panel-default">
+                <a th:href="@{/hours}" style="color: #0c0c0c">
+                    <div class="panel-header"><span style="font-size: x-large"><center>Hours</center></span></div>
+                </a>
+                <div class="panel-body">
+                    <!--<a th:href="@{/hours}"><img src="/image/hours.png" class="img-responsive" /></a>-->
+
+
+                    <div id="container" style="margin-top: 20px; width: 400px; height: 221px"></div>
+                    <script language="JavaScript">
+                        function drawChart() {
+                            // Define the chart to be drawn.
+                            var data = google.visualization.arrayToDataTable([
+                                ['Lat', 'Long', 'Name'],
+                                [27.717271, 85.268966, 'Home']
+                            ]);
+
+                            // Set chart options
+                            var options = {
+                                showTip: true,
+                                zoomLevel:17,
+                                showTooltip: true,
+                                showInfoWindow: true,
+                                useMapTypeControl: true,
+                                mapType: 'normal',
+                                mapTypeControl:false
+                            };
+
+                            // Instantiate and draw the chart.
+                            var chart = new google.visualization.Map(document.getElementById('container'));
+                            chart.draw(data, options);
+                        }
+
+                        google.charts.setOnLoadCallback(drawChart);
+                    </script>
+
                 </div>
             </div>
         </div>
         <div class="col-xs-4">
             <div clas="panel panel-default">
+                <a th:href="@{/faq}" style="color: #0c0c0c">
+                <div class="panel-header"><span style="font-size: x-large"><center>Faq</center></span></div>
                 <div class="panel-body">
-                    <a th:href="@{/hours}"><img src="/image/hours.png" class="img-responsive" /></a>
+                    <img src="/image/faq.png" class="img-responsive"/>
                 </div>
-            </div>
-        </div>
-        <div class="col-xs-4">
-            <div clas="panel panel-default">
-                <div class="panel-body">
-                    <a th:href="@{/faq}"><img src="/image/faq.png" class="img-responsive" /></a>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -108,7 +147,7 @@
         <div class="home-headline">
             <span>Featured Books</span>
         </div>
-        <hr style="margin-top: -15px;" />
+        <hr style="margin-top: -15px;"/>
     </div>
 
 
@@ -124,76 +163,76 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="/image/shelf.png" class="img-responsive" />
+                    <img src="/image/shelf.png" class="img-responsive"/>
                     <div class="carousel-caption">
                         <div class="row">
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/image/shelf.png" class="img-responsive" />
+                    <img src="/image/shelf.png" class="img-responsive"/>
                     <div class="carousel-caption">
                         <div class="row">
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="/image/shelf.png" class="img-responsive" />
+                    <img src="/image/shelf.png" class="img-responsive"/>
                     <div class="carousel-caption">
                         <div class="row">
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                             <div class="col-xs-2">
-                                <img class="img-responsive" src="/image/book1.png" />
+                                <img class="img-responsive" src="/image/book1.png"/>
                             </div>
                         </div>
                     </div>
@@ -216,7 +255,7 @@
 </div>
 <!-- end of container -->
 
-<div th:replace="common/header :: common-footer" />
-<div th:replace="common/header :: body-bottom-scripts" />
+<div th:replace="common/header :: common-footer"/>
+<div th:replace="common/header :: body-bottom-scripts"/>
 </body>
 </html>
